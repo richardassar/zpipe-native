@@ -6,7 +6,7 @@ var
 
 var data = "Experiments With Alternating Currents of Very High Frequency, and Their Application to Methods of Artificial Illumination";
 
-describe("zpipe", function() {
+describe("zpipe-native", function() {
 	describe("deflate", function() {
 		it("should compress strings", function() {
 			var zpipe_deflated = zpipe.deflate(data);

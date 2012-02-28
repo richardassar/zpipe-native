@@ -1,5 +1,5 @@
 {
-	"name" : "zpipe",
+	"name" : "zpipe-native",
 	"description" : "JavaScript port of ZLib DEFLATE for the browser",
 	"keywords" : ["compression", "zlib", "deflate"],
 	"version" : "1.0.1",
@@ -8,7 +8,7 @@
 	"test" : "make test",
 	"repository" : {
 		"type" : "git",
-		"url" : "https://github.com/richardassar/zpipe"
+		"url" : "https://github.com/richardassar/zpipe-native"
 	},
 	"devDependencies" : {
 		"mocha" : "*",
