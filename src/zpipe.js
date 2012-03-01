@@ -83,7 +83,7 @@ var Runtime = {
     return type in Runtime.INT_TYPES || type in Runtime.FLOAT_TYPES;
   }),
   isPointerType: function isPointerType(type) {
-    return type[type.length - 1] == "*";
+    return type.charAt(type.length - 1) == "*";
   },
   isStructType: function isStructType(type) {
     if (isPointerType(type)) return false;
@@ -161,7 +161,7 @@ var Runtime = {
       "%double": 8
     }["%" + type];
     if (!size) {
-      if (type[type.length - 1] == "*") {
+      if (type.charAt(type.length - 1) == "*") {
         size = Runtime.QUANTUM_SIZE;
       } else if (type[0] == "i") {
         var bits = parseInt(type.substr(1));
