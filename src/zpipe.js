@@ -83,7 +83,7 @@ var Runtime = {
     return type in Runtime.INT_TYPES || type in Runtime.FLOAT_TYPES;
   }),
   isPointerType: function isPointerType(type) {
-    return type.substr(type.length - 1, 1) == "*";
+    return type[type.length - 1] == "*";
   },
   isStructType: function isStructType(type) {
     if (isPointerType(type)) return false;
@@ -161,7 +161,7 @@ var Runtime = {
       "%double": 8
     }["%" + type];
     if (!size) {
-      if (type.substr(type.length - 1, 1) == "*") {
+      if (type[type.length - 1] == "*") {
         size = Runtime.QUANTUM_SIZE;
       } else if (type[0] == "i") {
         var bits = parseInt(type.substr(1));
@@ -368,7 +368,7 @@ function cwrap(ident, returnType, argTypes) {
 
 function setValue(ptr, value, type, noSafe) {
   type = type || "i8";
-  if (type.substr(type.length - 1, 1) === "*") type = "i32";
+  if (type[type.length - 1] === "*") type = "i32";
   switch (type) {
    case "i1":
     HEAP[ptr] = value;
@@ -400,7 +400,7 @@ Module["setValue"] = setValue;
 
 function getValue(ptr, type, noSafe) {
   type = type || "i8";
-  if (type.substr(type.length - 1, 1) === "*") type = "i32";
+  if (type[type.length - 1] === "*") type = "i32";
   switch (type) {
    case "i1":
     return HEAP[ptr];
@@ -507,7 +507,7 @@ var FUNCTION_TABLE;
 var PAGE_SIZE = 4096;
 
 function alignMemoryPage(x) {
-  return Math.ceil(x / PAGE_SIZE) * PAGE_SIZE;
+  return x + 4095 >> 12 << 12;
 }
 
 var HEAP;
