@@ -368,7 +368,7 @@ function cwrap(ident, returnType, argTypes) {
 
 function setValue(ptr, value, type, noSafe) {
   type = type || "i8";
-  if (type[type.length - 1] === "*") type = "i32";
+  if (type.charAt(type.length - 1) == "*") type = "i32";
   switch (type) {
    case "i1":
     HEAP[ptr] = value;
@@ -400,7 +400,7 @@ Module["setValue"] = setValue;
 
 function getValue(ptr, type, noSafe) {
   type = type || "i8";
-  if (type[type.length - 1] === "*") type = "i32";
+  if (type.charAt(type.length - 1) == "*") type = "i32";
   switch (type) {
    case "i1":
     return HEAP[ptr];
